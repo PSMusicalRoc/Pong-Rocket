@@ -1,0 +1,4 @@
+[submodule "vendor/Rocket"]
+	path = vendor/Rocket
+	url = https://github.com/Rocket-Game-Engine/Rocket.git
+	branch = development
