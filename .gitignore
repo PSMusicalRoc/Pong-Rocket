@@ -1,0 +1,11 @@
+# no shared objects
+*.so
+
+# don't include build files
+obj/
+bin/
+*.make
+Makefile
+
+# no compile commands
+compile_commands.json

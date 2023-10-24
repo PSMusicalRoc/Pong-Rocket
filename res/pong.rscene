@@ -1,0 +1,26 @@
+Texture "pongtex" "res/texture.png"
+Texture "testtex" "res/dvd-logo-png-15.png"
+Shader "sprite_shader" "res/sprite_vertshader.glsl" "res/sprite_fragshader.glsl"
+
+Entity "dvd" {
+    Transform {
+        double x = 0.0;
+        double y = 0.0;
+    }
+    Sprite {
+        string texture_key = "testtex";
+        string shader_key = "sprite_shader";
+        double width = 23.2;
+        double height = 10.0;
+    }
+    RectangleCollider {
+        double width = 23.2;
+        double height = 10.0;
+    }
+    BallComponent {
+        double velocity = 40.0;
+        double velocityX = 30.0;
+        double velocityY = 15.0;
+        bool justRespawned = 0;
+    }
+}
