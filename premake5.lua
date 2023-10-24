@@ -29,24 +29,26 @@ buildoptions {
 
 filter "system:Linux"
     linkoptions {
-        "-Wl,-z,origin,-rpath='./libs/'"
+        "-Wl,-rpath='./libs/'"
     }
 
 filter "configurations:Debug"
     prebuildcommands {
         rocket.prebuildCommandsDebug,
-        string.format("mkdir libs; cp \"%s\" libs", rocket.outputDebugLinux)
+        string.format("[ -d libs ] || mkdir libs; cp \"%s\" libs", rocket.outputDebugLinux)
     }
     postbuildcommands {
+        "[ -d bin/Debug/libs ] || mkdir -p bin/Debug/libs",
         "cp libs/libRocketGameEngine.so bin/Debug/libs/"
     }
 
 filter "configurations:Release"
     prebuildcommands {
         rocket.prebuildCommandsRelease,
-        string.format("mkdir libs; cp \"%s\" libs", rocket.outputReleaseLinux)
+        string.format("[ -d libs ] || mkdir libs; cp \"%s\" libs", rocket.outputReleaseLinux)
     }
     postbuildcommands {
+        "[ -d bin/Release/libs ] || mkdir -p bin/Release/libs",
         "cp libs/libRocketGameEngine.so bin/Release/libs/"
     }
 
