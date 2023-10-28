@@ -24,7 +24,12 @@ libdirs {"libs"}
 links {rocket.Links.UserProject}
 
 buildoptions {
-    "-Wall", "-Wextra"
+    "-Wall", "-Wextra",
+    rocket.cflags.UserProject
+}
+
+linkoptions {
+    rocket.linkflags.UserProject
 }
 
 filter "system:Linux"

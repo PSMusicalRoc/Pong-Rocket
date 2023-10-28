@@ -40,8 +40,13 @@ public:
 
         while (!glfwWindowShouldClose(m_window))
         {
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+
             curr_time = glfwGetTime();
             deltatime = curr_time - prev_time;
+
+            double fps = (double)1 / deltatime;
 
             cd->GetSystem<CollisionSystem>()->Do();
 
@@ -55,6 +60,9 @@ public:
             glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
             cd->GetSystem<RenderSpriteSystem>()->Do();
+
+            FontManager* fm = FontManager::Get();
+            fm->RenderText("FPS: " + std::to_string((int)fps), "Noto Sans", 100, 0.0, 70.0);
 
             glfwPollEvents();
             glfwSwapBuffers(m_window);

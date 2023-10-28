@@ -9,3 +9,6 @@ Makefile
 
 # no compile commands
 compile_commands.json
+
+# don't save app logfiles
+logfile.log
